@@ -15,7 +15,7 @@ class CustomError {
 const readNonExistentFile = async () => {
   const either = await promiseResolver(fs.readFile("non-existent.txt"));
   if (either.isLeft()) {
-    return resolveRight(new CustomError(either.value));
+    return resolveLeft(new CustomError(either.value));
   }
 
   return resolveRight(either.value);
